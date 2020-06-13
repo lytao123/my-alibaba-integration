@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  #允许存在多个Feign调用相同Service的接口
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.136.136:3306/alibaba_order?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.study.entity
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

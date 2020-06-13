@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.dao.AlibabaOrderDao">
+    <resultMap id="orderInfo" type="uOrder">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="goods_id" property="goodsId" jdbcType="BIGINT" />
+        <result column="goods_count" property="goodsCount" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="DATE" />
+    </resultMap>
+
+    <insert id="saveOrder" parameterType="uOrder">
+        insert into u_order(user_id, goods_id, goods_count, create_time)
+          values (#{userId}, #{goodsId}, #{goodsCount}, SYSDATE())
+    </insert>
+
+    <select id="findOrderById" parameterType="Long" resultMap="orderInfo">
+        SELECT id, user_id, goods_id, goods_count, create_time
+            FROM u_order WHERE id = #{id}
+    </select>
+
+</mapper>

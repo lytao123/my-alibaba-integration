@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.dao.AlibabaStorageDao">
+    <resultMap id="goodsInfo" type="uGoods">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="goods_count" property="goodCount" jdbcType="INTEGER" />
+        <result column="use_count" property="useCount" jdbcType="INTEGER" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="create_time" property="createTime" jdbcType="DATE" />
+    </resultMap>
+
+    <update id="saveGoods" parameterType="uGoods">
+        update u_goods set goods_count = #{goodCount}, use_count = #{useCount}
+    </update>
+
+    <select id="findGoodsById" parameterType="Long" resultMap="goodsInfo">
+        SELECT id, goods_count, use_count, price, create_time
+            FROM u_goods WHERE id = #{id}
+    </select>
+
+</mapper>

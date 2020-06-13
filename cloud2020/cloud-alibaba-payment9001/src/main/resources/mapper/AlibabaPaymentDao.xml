@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.dao.AlibabaPaymentDao">
+    <resultMap id="userInfo" type="uUser">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="money" property="money" jdbcType="DECIMAL" />
+        <result column="use_money" property="useMoney" jdbcType="DECIMAL" />
+        <result column="create_time" property="createTime" jdbcType="DATE" />
+    </resultMap>
+
+    <update id="savePayment" parameterType="uUser">
+        update u_user set money = #{money}, use_money = #{useMoney}
+    </update>
+
+    <select id="findUserById" parameterType="Long" resultMap="userInfo">
+        SELECT id, money, use_money, create_time
+            FROM u_user WHERE id = #{id}
+    </select>
+
+</mapper>

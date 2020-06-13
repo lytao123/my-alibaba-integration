@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloud-sleuth-order80" />
+        <module name="cloud-gateway-gateway20000" />
+        <module name="cloud-hystrix-payment8084" />
+        <module name="cloud-config-client3366" />
+        <module name="cloud-eureka-server7003" />
+        <module name="cloud-eureka-server7002" />
+        <module name="cloud-eureka-server7001" />
+        <module name="cloud-hystrix-dashboard9001" />
+        <module name="cloud-alibaba-payment9001" />
+        <module name="cloud-zkconsumer-order" />
+        <module name="cloud-alibaba-payment9002" />
+        <module name="cloud-alibaba-order8080" />
+        <module name="cloud-feign-hystrix-order80" />
+        <module name="cloud-consulconsumer-order" />
+        <module name="cloud-sleuth-payment8086" />
+        <module name="cloud-api-common" />
+        <module name="cloud-provider-payment8082" />
+        <module name="cloud-hystrix-payment8083" />
+        <module name="cloud-provider-payment8081" />
+        <module name="cloud-alibaba-storage9003" />
+        <module name="cloud-config-center3344" />
+        <module name="cloud-consulprovider-payment8090" />
+        <module name="cloud-consumer-order" />
+        <module name="cloud-zkprovider-payment8090" />
+        <module name="cloud-config-client3355" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="untitled" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

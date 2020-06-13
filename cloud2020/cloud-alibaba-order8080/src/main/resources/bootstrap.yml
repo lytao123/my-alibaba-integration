@@ -1,0 +1,55 @@
+
+nacos:
+  server-addr: 192.168.136.136:8848  # 单机
+#  server-addr: 127.0.0.1:80  # 集群
+
+
+spring:
+  application:
+    name: cloud-alibaba-order
+  profiles:
+      active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.server-addr}
+      config:
+        server-addr: ${nacos.server-addr}
+        file-extension: yaml
+        namespace: ${spring.profiles.active}
+        group: DEFAULT_GROUP
+    sentinel:
+      transport:
+        dashboard: http://192.168.136.136:8080
+        port: 8719  # 默认8719，假如被占用了会自动从8719开始依次+1扫描。直至找到未被占用的端口
+      # 持久化 sentinel
+      datasource:
+        ds1:
+          nacos:
+            server-addr: ${nacos.server-addr}
+            dataId: ${spring.application.name}
+            groupId: ${spring.cloud.nacos.config.group}
+            namespace: ${spring.cloud.nacos.config.namespace}
+            data-type: json
+            rule-type: flow
+
+# Seata 配置项，对应 SeataProperties 类
+seata:
+  application-id: ${spring.application.name}  # Seata 应用编号，默认为 ${spring.application.name}
+  tx-service-group: test_tx_group # Seata 事务组编号，用于 TC 集群名
+  # Seata 服务配置项，对应 ServiceProperties 类
+  service:
+    grouplist:
+      seata-server: 192.168.136.136:8091
+    # 虚拟组和分组的映射, key一定要与 tx-service-group一致
+    vgroupMapping:
+      test_tx_group: default
+  # Seata 注册中心配置项，对应 RegistryProperties 类
+  registry:
+    type: nacos # 注册中心类型，默认为 file
+    nacos:
+      server-addr: ${nacos.server-addr} # Nacos 服务地址
+  config:
+    type: nacos # 注册中心类型，默认为 file
+    nacos:
+      server-addr: ${nacos.server-addr} # Nacos 服务地址
